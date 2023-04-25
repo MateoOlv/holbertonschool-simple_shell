@@ -3,7 +3,7 @@ int execommand(char *string, char **array, int *pcount)
     int returncommand;
     
     array[0] = string;
-    returncommand = executePathProgram(array);
+    returncommand = exepath(array);
     
     if (_strcmp(string, "/usr/bin/env"))
         free(string);
