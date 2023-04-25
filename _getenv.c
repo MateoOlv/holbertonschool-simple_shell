@@ -1,3 +1,4 @@
+#include "main.h"
 char *_getenv(char *len)
 {
     char *env = NULL;
