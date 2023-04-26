@@ -89,6 +89,7 @@ int execom(char *string, char **array)
 				free(string);
 		}
 	}
+    /*127 es el codigo de salida cuando el comando no se encontro*/
 	else
 	{
 		fprintf(stderr, "%s: not recognized as an internal or external command, program or executable batch file\n", array[0]);
