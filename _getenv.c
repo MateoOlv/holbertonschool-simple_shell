@@ -1,18 +1,26 @@
 #include "main.h"
-char *_getenv(char *len)
+char *_getenv(char *name)
 {
-    char *env = NULL;
-    char *val = NULL;
-    int leng = _strlen(len);
+	int i = 0;
+	char *val;
 
-    for (int i = 0; environ[i]; i++)
-    {
-        env = environ[i];
-        if (strncmp(env, len, leng) == 0 && env[leng] == '=')
-        {
-            val = env + leng + 1;
-            return strdup(val);
-        }
-    }
-    return (NULL);
+	unsigned long lenValue, lenName = strlen(name);
+
+	while (environ[i] != NULL)
+
+	{
+		lenValue = strlen(environ[i]) - lenName;
+		val = malloc(lenValue * sizeof(char));
+		if (val == NULL)
+		{
+			perror("failed to allocate value");
+			return (NULL);
+		}
+		if (strncmp(name, environ[i], lenName) == 0 && strcpy(val, environ[i]))
+			return (val);
+
+		i++;
+	}
+
+	return (NULL);
 }
