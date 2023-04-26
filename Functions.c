@@ -2,7 +2,7 @@
 char *commandfind(char *line)
 {
 	char *token, *i;
-	char *cp, *cp2, *duptoken;
+	char *cp, *cp2, *tokencopy;
 	struct stat st;
 
 	if (!_strcmp(line, "env"))
@@ -18,11 +18,11 @@ char *commandfind(char *line)
 	else
 	{
 		cp = malloc(_strlen(i) + 1), cp2 = malloc(_strlen(line) + 1);
-		duptoken = malloc(_strlen(i) + _strlen(line) + 1);
+		tokencopy = malloc(_strlen(i) + _strlen(line) + 1);
 	}
 	if ((stat(line, &st) == 0) && st.st_mode == 33261)
 	{
-		frees(4, cp, i, cp2, duptoken);
+		frees(4, cp, i, cp2, tokencopy);
 		return (line);
 	}
 	if (i)
@@ -31,16 +31,16 @@ char *commandfind(char *line)
     /*Concatenamos cada token*/
 	while (token)
 	{
-		_strcpy(duptoken, token);
-		_strcat(duptoken, "/"), _strcat(duptoken, cp2);
-		if ((stat(duptoken, &st) == 0) && st.st_mode == 33261)
+		_strcpy(tokencopy, token);
+		_strcat(tokencopy, "/"), _strcat(tokencopy, cp2);
+		if ((stat(tokencopy, &st) == 0) && st.st_mode == 33261)
 		{
 			frees(3, i, cp, cp2);
-			return (duptoken);
+			return (tokencopy);
 		}
 		token = strtok(NULL, ":");
 	}
-	frees(4, i, cp, cp2, duptoken);
+	frees(4, i, cp, cp2, tokencopy);
 	return (NULL);
 }
 int exepath(char **token)
@@ -64,10 +64,11 @@ int exepath(char **token)
         if (execve(path, token, environ) == -1)
         {
             perror("Error: executing program failed");
-            exit(EXIT_FAILURE);
+            exit(1);
         }
     }
     waitpid(pid, &status, 0);
+	/*Chequea si hijo ya termino de ejecutarse y retorna su codigo se salida*/
     if (WIFEXITED(status))
     {
         return (WEXITSTATUS(status));

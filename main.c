@@ -6,10 +6,11 @@ int main(void)
     char *token[80] = {0};
     char *string;
     size_t buffsize = 0;
-
+    
+    printf("$ ");
     while (1)
     {
-        printf("$ ");
+
         if (getline(&intput, &buffsize, stdin) == (-1))
         {
             if (intput)
@@ -27,5 +28,17 @@ int main(void)
         tokenize(token, delim);
         string = commandfind(token[0]);
         execom(string, token);
+        
+        if(isatty(fileno(stdin)))
+        {
+                    printf("$ \n");
+        }
+        if (!isatty(fileno(stdin)) && feof(stdin))
+        {
+            free(intput);
+            break;
+        }
+
     }
+    return (0);
 }
