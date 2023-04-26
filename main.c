@@ -1,7 +1,7 @@
 #include "main.h"
 int main(void)
 {
-    char delim[] = {" \n\t"};
+    char delim[] = {" \n\t\r\a"};
     char *intput = NULL;
     char *token[80] = {0};
     char *string;
