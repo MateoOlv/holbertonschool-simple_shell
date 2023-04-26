@@ -1,3 +1,4 @@
+#include "main.h"
 void frees (int n, ...)
 {
  va_list args;
@@ -7,7 +8,7 @@ void frees (int n, ...)
  va_start(args, n);
  for (i = 0; i < n; i++)
  {
-    c = va_args(args, char *);
+    c = va_arg(args, char *);
     free(c);
  }
  va_end(args);
