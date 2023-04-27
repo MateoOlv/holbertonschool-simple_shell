@@ -4,7 +4,7 @@ int main(void)
     char delim[] = {" \n\t\r\a"};
     char *intput = NULL;
     char *token[80] = {0};
-    char *string;
+    char *string = NULL;
     size_t buffsize = 0;
     
     printf("$ ");
@@ -31,14 +31,11 @@ int main(void)
         
         if(isatty(fileno(stdin)))
         {
-                    printf("$ \n");
-        }
-        if (!isatty(fileno(stdin)) && feof(stdin))
-        {
-            free(intput);
-            break;
+                    printf("$ ");
+		    fflush(stdout);
         }
 
     }
+    free(intput);
     return (0);
 }

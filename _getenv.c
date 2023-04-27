@@ -9,7 +9,7 @@ char *_getenv(char *name)
 	while (environ[i] != NULL)
 	{
 		lenValue = (strlen(environ[i]) - lenName + 1);
-		val = malloc(lenValue * sizeof(char));
+		val = malloc(lenValue * sizeof(char *));
 		if (val == NULL)
 		{
 			perror("failed to allocate value");
@@ -21,5 +21,6 @@ char *_getenv(char *name)
 		val = NULL;
 		i++;
 	}
+	free(val);
 	return (NULL);
 }
