@@ -1,9 +1,9 @@
 #include "main.h"
 /**
- *frees - free function 
- *@n: amount of variables to free
- */
-void frees (int n, ...)
+*frees - free function
+*@n: amount of variables to free
+*/
+void frees(int n, ...)
 {
 va_list args;
 int i;
