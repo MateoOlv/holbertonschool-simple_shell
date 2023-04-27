@@ -2,13 +2,13 @@
 
 char *commandfind(char *line)
 {
-char *token, *i, *cp, *cp2, *tokencopy;
-struct stat st;
+	char *token, *i, *cp, *cp2, *tokencopy;
+	struct stat st;
 
-if (!_strcmp(line, "env"))
-return ("/usr/bin/env");
-i = _getenv("PATH");
-if (!(i))
+	if (!_strcmp(line, "env"))
+		return ("/usr/bin/env");
+	i = _getenv("PATH");
+	if (!(i))
 {
 if ((stat(line, &st) == 0) && st.st_mode == 33261)
 return (line);

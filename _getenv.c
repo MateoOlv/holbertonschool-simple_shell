@@ -2,14 +2,13 @@
 char *_getenv(char *name)
 {
 	int i = 0;
-	char *val;
+	char *val = NULL;
 
 	unsigned long lenValue, lenName = strlen(name);
 
 	while (environ[i] != NULL)
-
 	{
-		lenValue = strlen(environ[i]) - lenName;
+		lenValue = (strlen(environ[i]) - lenName + 1);
 		val = malloc(lenValue * sizeof(char));
 		if (val == NULL)
 		{
@@ -18,9 +17,9 @@ char *_getenv(char *name)
 		}
 		if (strncmp(name, environ[i], lenName) == 0 && strcpy(val, environ[i]))
 			return (val);
-
+		free(val);
+		val = NULL;
 		i++;
 	}
-
 	return (NULL);
 }
