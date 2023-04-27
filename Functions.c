@@ -23,7 +23,7 @@ char *commandfind(char *line)
 	}
 	if ((stat(line, &st) == 0) && st.st_mode == 33261)
 	{
-		frees(3, cp, i, cp2);
+		frees(4, cp, i, cp2, tokencopy);
 		return (line);
 	}
 	if (i)
@@ -43,8 +43,7 @@ char *commandfind(char *line)
 		}
 		token = strtok(NULL, ":");
 	}
-	frees(3, i, cp, cp2);
-	free(tokencopy);
+	frees(4, i, cp, cp2, tokencopy);
 	return (NULL);
 }
 

@@ -11,7 +11,7 @@ int main(void)
     while (1)
     {
 
-        if (getline(&intput, &buffsize, stdin) == (-1))
+        if (getline(&intput, &buffsize, stdin) == -1)
         {
             if (intput)
                 free(intput);
@@ -28,7 +28,6 @@ int main(void)
         tokenize(token, delim);
         string = commandfind(token[0]);
         execom(string, token);
-        
         if(isatty(fileno(stdin)))
         {
                     printf("$ ");
