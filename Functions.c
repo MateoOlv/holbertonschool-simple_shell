@@ -108,7 +108,7 @@ int execom(char *string, char **array)
 	}
 	else
 	{
-		fprintf(stderr, "%s: not recognized as a command\n", array[0]);
+		fprintf(stderr, "./hsh: 1: %s: not found\n", array[0]);
 		exit(127);
 	}
 	return (val);
