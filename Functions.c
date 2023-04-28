@@ -59,7 +59,7 @@ int exepath(char **token)
 	if (!path)
 	{
 		fprintf(stderr, "%s: not recognized as acommand\n", token[0]);
-		exit (127);
+		exit (1);
 	}
 	pid = fork();
 	if (pid == -1)
@@ -71,10 +71,8 @@ int exepath(char **token)
 	{
 		if (execve(path, token, environ) == -1)
 		{
-			if (errno == ENOENT)
-			exit(2);
-			fprintf(stderr, "Error en execvp(): %s\n", strerror(errno));
-			exit(EXIT_FAILURE);
+			perror("Error: executing program failed");
+			exit(1);
 		}
 	}
 	waitpid(pid, &status, 0);
@@ -111,7 +109,7 @@ int execom(char *string, char **array)
 	else
 	{
 		fprintf(stderr, "%s: not recognized as a command\n", array[0]);
-		return (127);
+		exit(127);
 	}
 	return (val);
 }
