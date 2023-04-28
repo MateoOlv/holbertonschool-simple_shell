@@ -26,6 +26,6 @@ int _strcmp(char *str1, char *str2);
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
 /*free function*/
-void frees (int n, ...);
+void frees(int n, ...);
 
 #endif
