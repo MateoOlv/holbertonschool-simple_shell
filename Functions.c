@@ -109,7 +109,7 @@ int execom(char *string, char **array)
 	else
 	{
 		fprintf(stderr, "%s: not recognized as a command\n", array[0]);
-		val = 127;
+		return (127);
 	}
 	return (val);
 }
