@@ -16,7 +16,7 @@
 <h2>
         <strong>Flowchart</strong>
 </h2>
-        <img src="">
+        <img src="https://i.ibb.co/k1xfKSg/Driagrama-de-flujo.png="1200" height="500">
 
 <h2>Requirements of the project:</h2>
 <h3>Compilation</h3>
@@ -166,10 +166,16 @@
                 </li>
                   		
 </ul>
+<hr>
 
 <h3>
+<h2>
+<div id="Testing">
   		<strong>Testing</strong>
-  			<img src="https:"width="611" height="711">
+</h2>
+  			
+			<img src="https://i.ibb.co/2SCYWSs/Test-2-simple-shell.png="400" height="400"> 
+			<img src="https://i.ibb.co/HCdYHf6/Test-1-simple-Shell.png="400" height="400">
 </h3>
 <hr>
 Mateo Olivera, Christopher Oxandabarat. Cohort 20.
