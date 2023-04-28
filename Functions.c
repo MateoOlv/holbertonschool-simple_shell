@@ -59,7 +59,7 @@ int exepath(char **token)
 	if (!path)
 	{
 		fprintf(stderr, "%s: not recognized as acommand\n", token[0]);
-		exit (1);
+		exit (errno);
 	}
 	pid = fork();
 	if (pid == -1)
@@ -72,7 +72,7 @@ int exepath(char **token)
 		if (execve(path, token, environ) == -1)
 		{
 			perror("Error: executing program failed");
-			exit(1);
+			exit(errno);
 		}
 	}
 	waitpid(pid, &status, 0);
