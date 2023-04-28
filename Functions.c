@@ -65,7 +65,7 @@ int exepath(char **token)
 	if (pid == -1)
 	{
 		perror("Error: forking failed");
-		exit (1);
+		exit(errno);
 	}
 	if (pid == 0)
 	{
