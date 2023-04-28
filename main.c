@@ -23,7 +23,7 @@ atty:
 		{
 			if (intput)
 				free(intput);
-			exit(1);
+			exit(0);
 		}
 		token[0] = strtok(intput, delim);
 		if (!token[0])

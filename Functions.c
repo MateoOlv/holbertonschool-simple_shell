@@ -59,13 +59,13 @@ int exepath(char **token)
 	if (!path)
 	{
 		fprintf(stderr, "%s: not recognized as acommand\n", token[0]);
-		return (0);
+		exit (1);
 	}
 	pid = fork();
 	if (pid == -1)
 	{
 		perror("Error: forking failed");
-		return (1);
+		exit (1);
 	}
 	if (pid == 0)
 	{
