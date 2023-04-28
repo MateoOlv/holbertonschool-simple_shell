@@ -73,8 +73,8 @@ int exepath(char **token)
 		{
 			if (errno == ENOENT)
 			exit(2);
-			perror("Error: executing program failed");
-			exit(1);
+			fprintf(stderr, "Error en execvp(): %s\n", strerror(errno));
+			exit(EXIT_FAILURE);
 		}
 	}
 	waitpid(pid, &status, 0);
