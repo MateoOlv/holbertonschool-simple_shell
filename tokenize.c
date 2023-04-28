@@ -1,4 +1,9 @@
 #include "main.h"
+/**
+*tokenize - tokenizer
+*@token: token
+*@delim: delimitador
+*/
 void tokenize(char **token, char *delim)
 {
 	int i;
