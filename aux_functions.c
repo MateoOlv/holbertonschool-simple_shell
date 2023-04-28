@@ -1,4 +1,9 @@
 #include "main.h"
+/**
+*_strlen - strlen function
+*@s: string
+*Return: i
+*/
 int _strlen(char *s)
 {
 	int i;
@@ -7,6 +12,12 @@ int _strlen(char *s)
 		continue;
 	return (i);
 }
+/**
+*_strcpy - strcpy
+*@dest: dest
+*@src: src
+*Return: dest
+*/
 char *_strcpy(char *dest, char *src)
 {
 	char *copy = dest;
@@ -15,6 +26,12 @@ char *_strcpy(char *dest, char *src)
 		continue;
 	return (dest);
 }
+/**
+*_strcat - strcat function
+*@dest: dest
+*@src: src
+*Return: return
+**/
 char *_strcat(char *dest, char *src)
 {
 	int len = _strlen(dest);
@@ -27,6 +44,12 @@ char *_strcat(char *dest, char *src)
 	dest[len + i] = '\0';
 	return (dest);
 }
+/**
+*_strcmp - strcmp
+*@s1: s1
+*@s2: s2
+*Return: 0
+*/
 int _strcmp(char *s1, char *s2)
 {
 	int i;

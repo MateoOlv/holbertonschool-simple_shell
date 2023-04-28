@@ -1,4 +1,10 @@
 #include "main.h"
+/**
+*_getenv - get env clone function
+*@name: name is the name
+*Return: something
+*
+*/
 char *_getenv(char *name)
 {
 	int i = 0;
