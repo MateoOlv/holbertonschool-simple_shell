@@ -167,14 +167,10 @@
                   		
 </ul>
 <hr>
-
-<h3>
 <h2>
   		<strong>Testing</strong>
 </h2>
-  			
-			<img src="https://i.ibb.co/HCdYHf6/Test-1-simple-Shell.png"400" height="400"> 
-</h3>
+  			<img src="https://i.ibb.co/HCdYHf6/Test-1-simple-Shell.png"400" height="400"> 
 <hr>
 Mateo Olivera, Christopher Oxandabarat. Cohort 20.
  holbertonschool-simple_shell
