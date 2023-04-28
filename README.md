@@ -170,7 +170,6 @@
 
 <h3>
 <h2>
-<div id="Testing">
   		<strong>Testing</strong>
 </h2>
   			
