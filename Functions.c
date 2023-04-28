@@ -10,7 +10,7 @@ char *commandfind(char *line)
 	struct stat st;
 
 	if (!_strcmp(line, "env"))
-		return ("/usr/bin/gcenv");
+		return ("/usr/bin/env");
 	i = _getenv("PATH");
 	if (!(i))
 	{
@@ -59,20 +59,20 @@ int exepath(char **token)
 	if (!path)
 	{
 		fprintf(stderr, "%s: not recognized as acommand\n", token[0]);
-		return (0);
+		exit (errno);
 	}
 	pid = fork();
 	if (pid == -1)
 	{
 		perror("Error: forking failed");
-		return (1);
+		exit(errno);
 	}
 	if (pid == 0)
 	{
 		if (execve(path, token, environ) == -1)
 		{
 			perror("Error: executing program failed");
-			exit(1);
+			exit(errno);
 		}
 	}
 	waitpid(pid, &status, 0);
@@ -109,7 +109,7 @@ int execom(char *string, char **array)
 	else
 	{
 		fprintf(stderr, "%s: not recognized as a command\n", array[0]);
-		val = 127;
+		exit(127);
 	}
 	return (val);
 }
