@@ -56,18 +56,18 @@ int exepath(char **token)
 	char *path = commandfind(token[0]);
 	int erno;
 
-	if (!path)
-	{
-		fprintf(stderr, "%s: not recognized as acommand\n", token[0]);
-		exit(errno);
-	}
 	pid = fork();
 	if (pid == -1)
 	{
 		perror("Error: forking failed");
-		exit(errno);
+		exit(1);
 	}
-	if (pid == 0)
+	else if (pid > 0)
+	{
+		wait(&status);
+		erno = WEXITSTATUS(status);
+	}
+	else
 	{
 		if (execve(path, token, environ) == -1)
 		{
@@ -76,15 +76,9 @@ int exepath(char **token)
 			if (erno != 0)
 				exit(erno);
 			else
-				exit(2);
 		}
 	}
-	waitpid(pid, &status, 0);
-	if (WIFEXITED(status))
-	{
-		return (WEXITSTATUS(status));
-	}
-	return (1);
+	return (erno);
 }
 /**
 *execom - execute a command
