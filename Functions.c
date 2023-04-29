@@ -71,11 +71,8 @@ int exepath(char **token)
 	{
 		if (execve(path, token, environ) == -1)
 		{
-			erno = errno;
 			perror("Error: executing program failed");
-			if (erno != 0)
-				exit(erno);
-			else
+			exit(EXIT_FAILURE);	
 		}
 	}
 	return (erno);
