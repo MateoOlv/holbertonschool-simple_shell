@@ -6,7 +6,7 @@
 int main(void)
 {
 	char delim[] = {" \n\t\r\a"};
-	char *intput = NULL;
+	char *input = NULL;
 	char *token[80] = {0};
 	char *string = NULL;
 	size_t buffsize = 0;
@@ -19,13 +19,13 @@ atty:
 			printf("$ ");
 			fflush(stdout);
 		}
-		if (getline(&intput, &buffsize, stdin) == -1)
+		if (getline(&input, &buffsize, stdin) == -1)
 		{
-			if (intput)
-				free(intput);
+			if (input)
+				free(input);
 			exit(0);
 		}
-		token[0] = strtok(intput, delim);
+		token[0] = strtok(input, delim);
 		if (!token[0])
 			goto atty;
 		if (strcmp(token[0], "exit") == 0)
@@ -37,6 +37,6 @@ atty:
 		string = commandfind(token[0]);
 		execom(string, token);
 	}
-	free(intput);
+	free(input);
 	return (0);
 }
