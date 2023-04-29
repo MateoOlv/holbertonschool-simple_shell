@@ -4,7 +4,7 @@
 <h1> Simple Shell </h1>
 <details>
 <summary>FlowChart</summary>
-<img src="https://camo.githubusercontent.com/6482f16bb69bee689ef9bf750213698f6199fe1d736959d5b02f549a2cc69b9a/68747470733a2f2f692e6962622e636f2f6b3178664b53672f447269616772616d612d64652d666c756a6f2e706e673d" />
+<img src="https://i.ibb.co/ZSt0ZZQ/flowchart.png" />
 </details>
 </div>
 
