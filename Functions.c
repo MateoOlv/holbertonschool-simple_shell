@@ -6,7 +6,7 @@
 */
 char *commandfind(char *line)
 {
-	char *token, *i, *cp, *cp2, *tokencopy = NULL;
+	char *token, *i, *cp = NULL, *cp2, *tokencopy = NULL;
 
 	if (!_strcmp(line, "env"))
 		return ("/usr/bin/env");
