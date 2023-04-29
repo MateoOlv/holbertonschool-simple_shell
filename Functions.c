@@ -6,17 +6,24 @@
 */
 char *commandfind(char *line)
 {
-	char *token, *i, *cp, *cp2, *tokencopy;
+	char *token, *i, *cp, *cp2, *tokencopy = NULL;
 
 	if (!_strcmp(line, "env"))
 		return ("/usr/bin/env");
 	i = _getenv("PATH");
-	if (!(i))
+	if (!i)
 	{
 		if (access(line, X_OK) == 0)
 			return (line);
 		else
 			return (NULL); }
+	else if (*i == '\0')
+	{
+	if (access(line, X_OK) == 0)
+	{return (line); }
+	else
+	{return (NULL); }
+	}
 	else
 	{
 		cp = malloc(_strlen(i) + 1);
@@ -27,20 +34,16 @@ char *commandfind(char *line)
 		frees(4, cp, i, cp2, tokencopy);
 		return (line); }
 	if (i)
-	_strcpy(cp, i);
-	_strcpy(cp2, line);
-	token = strtok(cp, ":");
+	{_strcpy(cp, i); }
+	_strcpy(cp2, line), token = strtok(cp, ":");
 	while (token)
 	{
-		_strcpy(tokencopy, token);
-		_strcat(tokencopy, "/");
+		_strcpy(tokencopy, token), _strcat(tokencopy, "/");
 		_strcat(tokencopy, cp2);
 		if (access(tokencopy, X_OK) == 0)
 		{
-			frees(3, i, cp, cp2);
-			return (tokencopy); }
-		token = strtok(NULL, ":");
-	}
+			frees(3, i, cp, cp2), return (tokencopy); }
+		token = strtok(NULL, ":"); }
 	frees(4, i, cp, cp2, tokencopy);
 	return (NULL);
 }
@@ -55,6 +58,7 @@ int exepath(char **token)
 	int status;
 	char *path = commandfind(token[0]);
 	int erno;
+
 	if (!path)
 	{
 		fprintf(stderr, "%s: not recognized as a command\n", token[0]);
@@ -76,7 +80,7 @@ int exepath(char **token)
 		if (execve(path, token, environ) == -1)
 		{
 			perror("Error: executing program failed");
-			exit(EXIT_FAILURE);	
+			exit(EXIT_FAILURE);
 		}
 	}
 	return (erno);
