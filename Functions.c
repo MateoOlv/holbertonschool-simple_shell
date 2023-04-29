@@ -55,7 +55,11 @@ int exepath(char **token)
 	int status;
 	char *path = commandfind(token[0]);
 	int erno;
-
+	if (!path)
+	{
+		fprintf(stderr, "%s: not recognized as a command\n", token[0]);
+		exit(1);
+	}
 	pid = fork();
 	if (pid == -1)
 	{
