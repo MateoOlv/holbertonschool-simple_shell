@@ -54,6 +54,7 @@ int exepath(char **token)
 	pid_t pid;
 	int status;
 	char *path = commandfind(token[0]);
+	int erno;
 
 	if (!path)
 	{
@@ -70,8 +71,12 @@ int exepath(char **token)
 	{
 		if (execve(path, token, environ) == -1)
 		{
+			erno = errno;
 			perror("Error: executing program failed");
-			exit(errno);
+			if (erno != 0)
+				exit(erno);
+			else
+				exit(2);
 		}
 	}
 	waitpid(pid, &status, 0);
