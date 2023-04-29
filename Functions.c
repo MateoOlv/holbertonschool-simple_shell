@@ -42,7 +42,7 @@ char *commandfind(char *line)
 		_strcat(tokencopy, cp2);
 		if (access(tokencopy, X_OK) == 0)
 		{
-			frees(3, i, cp, cp2), return (tokencopy); }
+			frees(3, i, cp, cp2); return (tokencopy); }
 		token = strtok(NULL, ":"); }
 	frees(4, i, cp, cp2, tokencopy);
 	return (NULL);
