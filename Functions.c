@@ -7,14 +7,13 @@
 char *commandfind(char *line)
 {
 	char *token, *i, *cp, *cp2, *tokencopy;
-	struct stat st;
 
 	if (!_strcmp(line, "env"))
 		return ("/usr/bin/env");
 	i = _getenv("PATH");
 	if (!(i))
 	{
-		if ((stat(line, &st) == 0) && st.st_mode == 33261)
+		if (access(line, X_OK) == 0)
 			return (line);
 		else
 			return (NULL); }
@@ -22,8 +21,8 @@ char *commandfind(char *line)
 	{
 		cp = malloc(_strlen(i) + 1);
 		cp2 = malloc(_strlen(line) + 1);
-		tokencopy = malloc(_strlen(i) + _strlen(line) + 2); }
-	if ((stat(line, &st) == 0) && st.st_mode == 33261)
+		tokencopy = malloc(_strlen(i) + _strlen(line) + 1); }
+	if (access(line, X_OK) == 0)
 	{
 		frees(4, cp, i, cp2, tokencopy);
 		return (line); }
@@ -36,7 +35,7 @@ char *commandfind(char *line)
 		_strcpy(tokencopy, token);
 		_strcat(tokencopy, "/");
 		_strcat(tokencopy, cp2);
-		if ((stat(tokencopy, &st) == 0) && st.st_mode == 33261)
+		if (access(tokencopy, X_OK) == 0)
 		{
 			frees(3, i, cp, cp2);
 			return (tokencopy); }
