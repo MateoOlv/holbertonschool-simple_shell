@@ -1,121 +1,148 @@
 <div align="center">
-<a href="https://holbertonschool.uy"><img src="https://apply.holbertonschool.com/holberton-logo.png" /></a>
-<h1><strong>C - Simple Shell</strong> <a href="https://holbertonschool.uy"></h1>
-<h2><div id="Flowchart"></h2>
-<h2>
+
+<img src="https://apply.holbertonschool.com/holberton-logo.png" />
+<h1> Simple Shell </h1>
 <details>
-<summary>Flowchart</summary>
-<img src="https://i.ibb.co/k1xfKSg/Driagrama-de-flujo.png=" />
+<summary>FlowChart</summary>
+<img src="https://camo.githubusercontent.com/6482f16bb69bee689ef9bf750213698f6199fe1d736959d5b02f549a2cc69b9a/68747470733a2f2f692e6962622e636f2f6b3178664b53672f447269616772616d612d64652d666c756a6f2e706e673d" />
 </details>
-</h2>
 </div>
-<br>                  
+
 <br>
-<h2>
-Index
-</h2>
-<ul>
-                <li><a href="#Description"> <strong> Description </strong> </a></li>
-                <li><a href="#Requirement of the project"> <strong> Requirement of the project </strong> </a></li>
-                <li><a href="#Compilation"> <strong> Compilation </strong> </a></li>
-                <li><a href="#General"> <strong> General </strong> </a></li>
-                <li><a href="#List of allowed functions and system calls+"> <strong> List of allowed functions and system calls+ </strong> </a></li>
-                <li><a href="#Testing"> <strong> Testing </strong> </a></li>
-                <li><a href="#Flowchart"> <strong> Flowchart </strong> </a></li>
-                <li><a href="#Credits"> <strong> Credits </strong></a></li>
-<hr>
-<h2 id="Description">Description</h2>
-<details>
-<summary></summary>
-<p>Simple shell: This is a version of shell for holbertonschool-simple_shell project. The program works like the sh shell with all the functionalities that it provides and a primitive interface.</p>
-</details>
-<h2 id="Requirement of the project">Requirement of the project</h2>
-<h2 id="Compilation">Compilation</h2>
-<details>
-<summary></summary>
-<p> -Wall -Werror -Wextra -pedantic -std=gnu89 </p>
-</details>
-<hr>
- <h2 id="General">General</h2>
-<details>
- <summary></summary>
-<ul>
-                <li> Who designed and implemented the original Unix operating system </li>
-                <li> Who wrote the first version of the UNIX shell </li>
-@@ -36,162 +52,77 @@
-                <li> What are the threle prototypes of main </li>
-                <li> How does the shell use the PATH to find the programs </li>
-                <li> How to execute another program with the execve system call </li>
-                                <li> How to suspend the execution of a process until one of its children terminates </li>
-  				          <li> What is EOF / “end-of-file”? </li>
-  				          <li> Allowed editors: vi, vim, emacs </li>
-                <li> All your files will be compiled on Ubuntu 20.04 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89 </li>
-  				          <li> All your files should end with a new line </li>
-  				          <li> A README.md file, at the root of the folder of the project is mandatory </li>
-  				          <li> Your code should use the Betty style. It will be checked using betty-style.pl and betty-doc.pl </li>
-  				          <li> Your shell should not have any memory leaks </li>
-  				         <li> No more than 5 functions per file </li>
-  				         <li> All your header files should be include guarded </li>
-  				         <li> Use system calls only when you need to (why?) </li>
- </ul>
- </details>
-<hr>
-<h2 id="List of allowed functions and system calls+">List of allowed functions and system calls+</h2>
-<details>
-<summary></summary>
-<ul>
-                <li>all functions from strings.h</li>
-                <li>access (man 2 access)</li>
-                <li>chdir (man 2 chdir) </li>
-                <li> close (man 2 close)</li>
-                <li>closedir (man 3 closedir)</li>
-                <li>execve (man 2 execve)</li>  
-                <li>exit (man 3 exit)</li>
-                <li>_exit (man 2 _exit)</li>  
-   				         <li>	fflush (man 3 fflush)</li>
-                <li>fork (man 2 fork)</li>
-                <li>free (man 3 free)</li>
-                <li>getcwd (man 3 getcwd)</li>
-                <li>getline (man 3 getline)</li>
-                <li>getpid (man 2 getpid)</li>
-                <li>isatty (man 3 isatty)</li>
-                <li>kill (man 2 kill)</li>
-                <li>malloc (man 3 malloc)</li>
-                <li>open (man 2 open)</li>
-                <li>opendir (man 3 opendir)</li>
-                <li>perror (man 3 perror)</li>
-                <li>printf (man 3 printf)</li>
-                <li>fprintf (man 3 fprintf)</li>
-                <li>vfprintf (man 3 vfprintf)</li>
-                <li>sprintf (man 3 sprintf)</li>
-                <li>putchar (man 3 putchar)</li>
-                <li>read (man 2 read)</li>
-                <li>readdir (man 3 readdir)</li>
-                <li>signal (man 2 signal)</li>
-                <li>stat (__xstat) (man 2 stat)</li>
-                <li>lstat (__lxstat) (man 2 lstat)</li>
-                <li>fstat (__fxstat) (man 2 fstat)</li>
-                <li>strtok (man 3 strtok)</li>
-                <li>wait (man 2 wait)</li>
-                <li>waitpid (man 2 waitpid)</li>
-                <li>wait3 (man 2 wait3)</li>
-                <li>wait4 (man 2 wait4)</li>
-                <li>write (man 2 write)</li>
+  
+## Index
+* [Description](#description)
+* [Requirements](#requirements)
+* [How it work](#how-it-work)
+* [Resources](#resources)
+* [Credits](#credits)
 
-</ul>
-</details>
-<hr>
-<h2 id="Testing">Testing</h2>
+## Description
+
+### What it is?
+Shell is a UNIX term for the interactive user interface with an operating system. The shell is the layer of programming that understands and executes the commands a user enters. In some systems, the shell is called a command interpreter.
+
+## Requirements
 <details>
- <summary></summary>
-  			<img src="https://i.ibb.co/HCdYHf6/Test-1-simple-Shell.png"400" height="400">
-     <img src="https://i.ibb.co/2SCYWSs/Test-2-simple-shell.png" height="400">
+  <summary>General</summary>
+  
+* Allowed editors: vi, vim, emacs.
+* All your files will be compiled on Ubuntu 20.04 LTS.
+* All your files should end with a new line.
+* A README.md file, at the root of the folder of the project is mandatory.
+* Your code should use the Betty style.
+* Your shell should not have any memory leaks.
+* No more than 5 functions per file.
+* All your header files should be include guarded.
+* Use system calls only when you need to.
 </details>
-<hr>
+
+<details>
+  <summary>Compilation</summary>
+  
+  * Your code will be compiled this way:
+```
+$ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c -o hsh
+```
+</details>
+
+<details>
+  <summary>GitHub</summary>
+  
+  * There should be one project repository per group. If you clone/fork/whatever a project repository with the same name before the second deadline, you risk a 0% score.
+</details>
+
+<details>
+  <summary>Output</summary>
+  
+  * Unless specified otherwise, your program must have the exact same output as sh (/bin/sh) as well as the exact same error output.
+  * The only difference is when you print an error, the name of the program must be equivalent to your argv[0] (See below)
+  
+  #### Example of error with sh:
+  ```
+  $ echo "qwerty" | /bin/sh
+/bin/sh: 1: qwerty: not found
+$ echo "qwerty" | /bin/../bin/sh
+/bin/../bin/sh: 1: qwerty: not found
+$
+  ```
+</details>
+
+<details>
+  <summary>Allowed functions and system calls</summary>
+  
+  * all functions from strings.h
+* access (man 2 access)
+* chdir (man 2 chdir)
+* close (man 2 close)
+* closedir (man 3 closedir)
+* execve (man 2 execve)
+* exit (man 3 exit)
+* _exit (man 2 _exit)
+* fflush (man 3 fflush)
+* fork (man 2 fork)
+* free (man 3 free)
+* getcwd (man 3 getcwd)
+* getline (man 3 getline)
+* getpid (man 2 getpid)
+* isatty (man 3 isatty)
+* kill (man 2 kill)
+* malloc (man 3 malloc)
+* open (man 2 open)
+* opendir (man 3 opendir)
+* perror (man 3 perror)
+* printf (man 3 printf)
+* fprintf (man 3 fprintf)
+* vfprintf (man 3 vfprintf)
+* sprintf (man 3 sprintf)
+* putchar (man 3 putchar)
+* read (man 2 read)
+* readdir (man 3 readdir)
+* signal (man 2 signal)
+* stat (__xstat) (man 2 stat)
+* lstat (__lxstat) (man 2 lstat)
+* fstat (__fxstat) (man 2 fstat)
+* strtok (man 3 strtok)
+* wait (man 2 wait)
+* waitpid (man 2 waitpid)
+* wait3 (man 2 wait3)
+* wait4 (man 2 wait4)
+* write (man 2 write)
+</details>
+
+## How it work
+<details>
+  <summary>Video</summary>
+  
+
+
+
+https://user-images.githubusercontent.com/124683293/235304972-a02c71cc-aa64-48c5-a967-d1fef4ab5f20.mp4
+
+
+
+</details>
+
+
+
+
+## Resources
+
+<details>
+  <summary>Links</summary>
+  
+  * <a href="https://en.wikipedia.org/wiki/Unix_shell">[Unix Shell]</a>
+  * <a href="https://en.wikipedia.org/wiki/Thompson_shell">[Thompson shell]</a>
+  * <a href="https://en.wikipedia.org/wiki/Ken_Thompson">[Ken Thompson]</a>
+  * <a href="https://intranet.hbtn.io/concepts/900">[Super Simple Shell]</a>
+  * <a href="https://intranet.hbtn.io/concepts/895">[Flowcharts]</a>
+  
+</details>
+  
 <div align="center">
-
+  
 ## Credits
-
+ 
 &ensp;[<img src="https://img.shields.io/badge/MateoOlv-%23121011.svg?style=for-the-badge&logo=github&logoColor=white">](https://github.com/MateoOlv)
 &ensp;[<img src="https://img.shields.io/badge/coxan33-%23121011.svg?style=for-the-badge&logo=github&logoColor=white">](https://github.com/coxan33)
 
