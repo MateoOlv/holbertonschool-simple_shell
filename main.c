@@ -5,11 +5,10 @@
 */
 int main(void)
 {
-	char delim[] = {" \n\t\r\a"};
-	char *input = NULL;
-	char *token[80] = {0};
-	char *string = NULL;
+	char delim[] = {" \n\t\r\a"}, *input = NULL, *tok;
+	char **token = {NULL}, *string = NULL, *pun;
 	size_t buffsize = 0;
+	int tokcount = 0;
 
 	while (1)
 	{
@@ -21,24 +20,25 @@ atty:
 		}
 		if (getline(&input, &buffsize, stdin) == -1)
 		{
-			if (isatty(fileno(stdin)))
-				printf("\n");
 			if (input)
 				free(input);
 			exit(0);
 		}
-		token[0] = strtok(input, delim);
-		if (token[0])
-		{
+		tokcount = 0, token = malloc(sizeof(char*) * buffsize);
+		tok = strtok(input, delim);
+		while(tok != NULL)
+		{ token[tokcount++] = tok; tok = strtok(NULL, delim); }
+		if (tokcount == 0)
+		{free(input); goto atty; }
 		if (strcmp(token[0], "exit") == 0)
-		{
-			free(input);
-			exit(0); } }
-		else
-			goto atty;
-		tokenize(token, delim);
+		{frees(2, input, token); exit(0); }
 		string = commandfind(token[0]);
+		if (string = NULL)
+		{free(input); printf("Command not found: %p\n", token);
+		continue;
+		}
 		execom(string, token);
+		free(token);
 	}
 	free(input);
 	return (0);
