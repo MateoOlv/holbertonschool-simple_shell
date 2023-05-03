@@ -7,7 +7,7 @@ int main(void)
 {
 	char delim[] = {" \n\t\r\a"};
 	char *intput = NULL;
-	char *token[80] = {0};
+	char **token = {NULL};
 	char *string = NULL;
 	size_t buffsize = 0;
 
