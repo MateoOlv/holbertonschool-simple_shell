@@ -18,7 +18,7 @@ char *commandfind(char *line);
 int exepath(char **token);
 void tokenize(char **token, char *delim);
 int execom(char *string, char **token);
-void sigintHandler(int sig_num);
+void sigHandler(int sig_num);
 char *_getenv(char *str);
 /*Aux functions*/
 int _strlen(char *str);
