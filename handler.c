@@ -8,7 +8,7 @@ void sigHandler(int num)
 {
 	(void)num;
 
-	signal(SIGINT, sigintHandler);
+	signal(SIGINT, sigHandler);
 	printf("\n$ ");
 	fflush(stdout);
 }
