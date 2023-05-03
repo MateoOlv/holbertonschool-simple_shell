@@ -6,43 +6,39 @@
 */
 char *commandfind(char *line)
 {
-	char *token, *i, *cp = NULL, *cp2, *tokencopy = NULL;
+	char *token, *i, *cp, *cp2, *tokencopy;
 
 	if (!_strcmp(line, "env"))
 		return ("/usr/bin/env");
 	i = _getenv("PATH");
-	if (!i)
+	if (!(i))
 	{
 		if (access(line, X_OK) == 0)
 			return (line);
 		else
 			return (NULL); }
-	else if (*i == '\0')
-	{
-	if (access(line, X_OK) == 0)
-	{return (line); }
-	else
-	{return (NULL); }
-	}
 	else
 	{
 		cp = malloc(_strlen(i) + 1);
 		cp2 = malloc(_strlen(line) + 1);
-		tokencopy = malloc(_strlen(i) + _strlen(line) + 1); }
+		tokencopy = malloc(_strlen(i) + _strlen(line) + 2); }
 	if (access(line, X_OK) == 0)
 	{
 		frees(4, cp, i, cp2, tokencopy);
 		return (line); }
 	if (i)
-	{_strcpy(cp, i); }
-	_strcpy(cp2, line), token = strtok(cp, ":");
+	_strcpy(cp, i);
+	_strcpy(cp2, line);
+	token = strtok(cp, ":");
 	while (token)
 	{
-		_strcpy(tokencopy, token), _strcat(tokencopy, "/");
+		_strcpy(tokencopy, token);
+		_strcat(tokencopy, "/");
 		_strcat(tokencopy, cp2);
-		if (access(tokencopy, X_OK) == 0)
+		if (access(line, X_OK) == 0)
 		{
-			frees(3, i, cp, cp2); return (tokencopy); }
+			frees(3, i, cp, cp2);
+			return (tokencopy); }
 		token = strtok(NULL, ":"); }
 	frees(4, i, cp, cp2, tokencopy);
 	return (NULL);
@@ -57,33 +53,32 @@ int exepath(char **token)
 	pid_t pid;
 	int status;
 	char *path = commandfind(token[0]);
-	int erno;
 
 	if (!path)
 	{
-		fprintf(stderr, "%s: not recognized as a command\n", token[0]);
-		exit(1);
+		fprintf(stderr, "%s: not recognized as acommand\n", token[0]);
+		exit (errno);
 	}
 	pid = fork();
 	if (pid == -1)
 	{
 		perror("Error: forking failed");
-		exit(1);
+		exit(errno);
 	}
-	else if (pid > 0)
-	{
-		wait(&status);
-		erno = WEXITSTATUS(status);
-	}
-	else
+	if (pid == 0)
 	{
 		if (execve(path, token, environ) == -1)
 		{
 			perror("Error: executing program failed");
-			exit(EXIT_FAILURE);
+			exit(errno);
 		}
 	}
-	return (erno);
+	waitpid(pid, &status, 0);
+	if (WIFEXITED(status))
+	{
+		return (WEXITSTATUS(status));
+	}
+	return (1);
 }
 /**
 *execom - execute a command
@@ -111,9 +106,8 @@ int execom(char *string, char **array)
 	}
 	else
 	{
-		fprintf(stderr, "./hsh: 1: %s: not found\n", array[0]);
-		free(string);
-		val = 127;
+		fprintf(stderr, "%s: not recognized as a command\n", array[0]);
+		exit(127);
 	}
 	return (val);
 }
