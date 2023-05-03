@@ -112,7 +112,8 @@ int execom(char *string, char **array)
 	else
 	{
 		fprintf(stderr, "./hsh: 1: %s: not found\n", array[0]);
-		exit(127);
+		free(string);
+		val = 127;
 	}
 	return (val);
 }
